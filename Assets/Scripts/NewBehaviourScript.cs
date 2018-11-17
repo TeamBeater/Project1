@@ -14,3 +14,9 @@ public class NewBehaviourScript : MonoBehaviour {
 		Meemausta
 	}
 }
+/*
+ * joulu on kivaa
+ * joulurunot ei
+ * pullas on hiivaa
+ * antti on gay
+ *  */
