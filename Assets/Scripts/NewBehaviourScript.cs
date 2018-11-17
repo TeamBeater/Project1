@@ -14,3 +14,9 @@ public class NewBehaviourScript : MonoBehaviour {
 		
 	}
 }
+/*
+ * joulu on kivaa
+ * joulurunot ei
+ * pullas on hiivaa
+ * antti on gay
+ *  */
