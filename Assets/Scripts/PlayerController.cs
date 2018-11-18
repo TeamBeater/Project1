@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
 
     private bool playerMoving;
-    private Vector2 lastMove;
+    private Vector2 lastMove = Vector2.zero;
     private bool playerRunning;
     private float t = 0.0f;
 
@@ -64,9 +64,6 @@ public class PlayerController : MonoBehaviour {
             anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
             anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         }
-
-        if (playerVelocity != Vector3.zero)
-            lastMove = (Vector2) playerVelocity;
 
         rb.velocity = playerVelocity;
 
