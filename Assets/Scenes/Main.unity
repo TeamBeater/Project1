@@ -2923,31 +2923,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: {fileID: 1256663805}
---- !u!61 &251184919
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 251184917}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 1.5}
-  m_EdgeRadius: 0
 --- !u!4 &252518112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4928158850321682, guid: 259098dbf1e51ef4dab481d5fd4d1f55,
@@ -4658,11 +4633,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4765084114043910, guid: 9e24fb71afdf9c745b2d7439086186a1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 8.91
+      value: 16.49
       objectReference: {fileID: 0}
     - target: {fileID: 4765084114043910, guid: 9e24fb71afdf9c745b2d7439086186a1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.08
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4765084114043910, guid: 9e24fb71afdf9c745b2d7439086186a1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -14331,31 +14306,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4765084114043910, guid: 9e24fb71afdf9c745b2d7439086186a1,
     type: 2}
   m_PrefabInternal: {fileID: 428656216}
---- !u!61 &1339453171
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1339453168}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.4}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 1.5}
-  m_EdgeRadius: 0
 --- !u!114 &1339453172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16398,8 +16348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca673b065da5004aa35a12f108ac8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  runMultiplier: 3
+  moveSpeed: 3
+  runMultiplier: 1.75
   delay: 0.1
 --- !u!212 &1500317160
 SpriteRenderer:
