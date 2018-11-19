@@ -31,41 +31,41 @@ public class PlayerController : MonoBehaviour {
         float moveY = Input.GetAxisRaw("Vertical");
         Vector3 playerVelocity = Vector3.zero;
 
+        
+
+        if (moveX != 0.0f || moveY != 0.0f)
+        {
+            playerVelocity = new Vector3(moveX, moveY, 0.0f);
+            playerMoving = true;
+            lastMove = new Vector2(moveX, moveY);
+        }
+
+        playerVelocity *= moveSpeed;
+
+        if (Input.GetAxisRaw("Run") != 0.0f)
+        {
+            playerRunning = true;
+            playerVelocity *= runMultiplier;
+        }
+
+        if (moveX != 0 && moveY != 0)
+        {
+            playerVelocity /= 1.4142f;
+            t = Time.time;
+        }
+
+        rb.velocity = playerVelocity;
+
         if (Time.time < t + delay && Time.time > delay)
         {
-            playerVelocity = new Vector3(lastMove.x, lastMove.y, 0.0f);
-            playerMoving = true;
             anim.SetFloat("MoveX", lastMove.x);
             anim.SetFloat("MoveY", lastMove.y);
         }
         else
         {
-            if (moveX != 0.0f || moveY != 0.0f)
-            {
-                playerVelocity = new Vector3(moveX, moveY, 0.0f);
-                playerMoving = true;
-                lastMove = new Vector2(moveX, moveY);
-            }
-
-            playerVelocity *= moveSpeed;
-
-            if (Input.GetAxisRaw("Run") != 0.0f)
-            {
-                playerRunning = true;
-                playerVelocity *= runMultiplier;
-            }
-
-            if (moveX != 0 && moveY != 0)
-            {
-                playerVelocity /= 1.4142f;
-                t = Time.time;
-            }
-
             anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
             anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         }
-
-        rb.velocity = playerVelocity;
 
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetBool("PlayerRunning", playerRunning);
