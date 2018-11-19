@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float moveSpeed = 1;
-    public float runMultiplier = 2;
+    public float moveSpeed = 1.0f;
+    public float runMultiplier = 2.0f;
     public float delay = 0.1f;
 
     private Animator anim;

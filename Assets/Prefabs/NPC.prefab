@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114562272141966038}
   - component: {fileID: 114859734884869418}
   - component: {fileID: 61131118426914152}
-  - component: {fileID: 50753508324585408}
+  - component: {fileID: 114666687042358420}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -80,26 +80,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50753508324585408
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821293272448424}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &61131118426914152
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -206,6 +186,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f3f7e504e9cc147aa12d7b634b70d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 1
+  diff: 0.01
+  corners: []
+--- !u!114 &114666687042358420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821293272448424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f3f7e504e9cc147aa12d7b634b70d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  diff: 0.01
+  corners: []
 --- !u!114 &114859734884869418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db33d3b8bac3e6f49b5178f9886ee1b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  message: {fileID: 0}
 --- !u!212 &212341602586400160
 SpriteRenderer:
   m_ObjectHideFlags: 1

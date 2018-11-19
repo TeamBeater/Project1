@@ -6,11 +6,10 @@ using UnityEngine.UI;
 public class TalkingNPC : MonoBehaviour {
 
     public Text message;
-    
-    private bool playerIsInTrigger = false;
-    
 
-	void Update ()
+    private bool playerIsInTrigger = false;
+
+    void Update ()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerIsInTrigger)
         {
