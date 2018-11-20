@@ -1,23 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
     public float moveSpeed = 1.0f;
     public float runMultiplier = 2.0f;
     public float delay = 0.1f;
-    public static GameObject instance = null;
-
+    public float attackCoolDown = 1.0f;
+    public int health = 10;
+    public Text text;
+    
     private Animator anim;
     private Rigidbody2D rb;
-
     private bool playerMoving;
     private Vector2 lastMove = Vector2.zero;
     private bool playerRunning;
     private float t = 0.0f;
-    
-	void Start () {
+    private float textOnTime = 0.0f;
+    private float lastAttack = 0.0f;
+    private bool youDiedIsOn = false;
+    private static GameObject instance = null;
+
+    void Start () {
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+
         if (instance == null)
         {
             instance = this.gameObject;
@@ -27,10 +37,8 @@ public class PlayerController : MonoBehaviour {
             Destroy(this.gameObject);
         }
 
-        anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
         DontDestroyOnLoad(this.gameObject);
-	}
+    }
 	
 	void Update () {
         playerMoving = false;
@@ -83,5 +91,48 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("PlayerRunning", playerRunning);
         anim.SetFloat("LastMoveX", lastMove.x);
         anim.SetFloat("LastMoveY", lastMove.y);
+
+        if (youDiedIsOn && Time.time > textOnTime + 5.0f)
+        {
+            text.text = "";
+        }
 	}
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Monster" && Input.GetKeyDown(KeyCode.Mouse0) && Time.time > lastAttack + attackCoolDown)
+        {
+            MonsterController mc = collision.GetComponent<MonsterController>();
+            mc.TakeDamage(1, (collision.gameObject.transform.position - transform.position).normalized);
+            lastAttack = Time.time;
+        }
+    }
+
+    public void TakeDamage(int damage, Vector3 kick)
+    {
+        rb.AddForce(kick);
+        health -= damage;
+        if (health <= 0)
+        {
+            health = 10;
+            StartCoroutine("LoadScene");
+        }
+    }
+
+    IEnumerator LoadScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Home");
+        asyncLoad.allowSceneActivation = true;
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        transform.position = new Vector3(-4.5f, -5.5f, 0.0f);
+        text.text = "You died";
+        textOnTime = Time.time;
+        youDiedIsOn = true;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Home"));
+    }
 }

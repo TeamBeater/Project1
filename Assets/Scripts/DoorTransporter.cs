@@ -7,13 +7,10 @@ public class DoorTransporter : MonoBehaviour {
 
     public string sceneToLoad;
 
-    private GameObject player;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            player = collision.gameObject;
             StartCoroutine("LoadScene");
         }
     }
@@ -27,9 +24,7 @@ public class DoorTransporter : MonoBehaviour {
         {
             yield return null;
         }
-
-        //SceneManager.MoveGameObjectToScene(player, SceneManager.GetSceneByName(sceneToLoad));
-        //SceneManager.MoveGameObjectToScene(mainCamera, SceneManager.GetSceneByName(sceneToLoad));
+        
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneToLoad));
     }
 }

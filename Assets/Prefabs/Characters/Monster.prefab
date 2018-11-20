@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114379665966213390}
   - component: {fileID: 50381062649296906}
   - component: {fileID: 61993865052602204}
+  - component: {fileID: 61317589909976668}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -63,6 +64,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &61317589909976668
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781804412225294}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!61 &61993865052602204
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -101,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterSpeed: 1
   dodgeMultiplier: 0.3
+  hitCoolDown: 1
 --- !u!212 &212245644441510674
 SpriteRenderer:
   m_ObjectHideFlags: 1
