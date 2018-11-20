@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed = 1.0f;
     public float runMultiplier = 2.0f;
     public float delay = 0.1f;
+    public static GameObject instance = null;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -15,14 +16,22 @@ public class PlayerController : MonoBehaviour {
     private Vector2 lastMove = Vector2.zero;
     private bool playerRunning;
     private float t = 0.0f;
-
-	// Use this for initialization
+    
 	void Start () {
+        if (instance == null)
+        {
+            instance = this.gameObject;
+        }
+        else if (instance != this.gameObject)
+        {
+            Destroy(this.gameObject);
+        }
+
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        DontDestroyOnLoad(this.gameObject);
 	}
 	
-	// Update is called once per frame
 	void Update () {
         playerMoving = false;
         playerRunning = false;
