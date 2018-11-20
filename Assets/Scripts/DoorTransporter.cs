@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class DoorTransporter : MonoBehaviour {
 
     public string sceneToLoad;
-    public GameObject mainCamera;
 
     private GameObject player;
 

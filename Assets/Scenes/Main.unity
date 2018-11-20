@@ -8021,6 +8021,11 @@ Prefab:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114836082259756366, guid: d86d069ac78fde343ba468e2950be1cd,
+        type: 2}
+      propertyPath: sceneToLoad
+      value: Combat Area
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86d069ac78fde343ba468e2950be1cd, type: 2}
   m_IsPrefabAsset: 0
