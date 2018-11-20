@@ -69,6 +69,8 @@ public class PlayerController : MonoBehaviour {
         {
             anim.SetFloat("MoveX", lastMove.x);
             anim.SetFloat("MoveY", lastMove.y);
+            anim.SetFloat("LastMoveX", lastMove.x);
+            anim.SetFloat("LastMoveY", lastMove.y);
         }
         else
         {
@@ -76,6 +78,7 @@ public class PlayerController : MonoBehaviour {
             anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
         }
 
+        
         anim.SetBool("PlayerMoving", playerMoving);
         anim.SetBool("PlayerRunning", playerRunning);
         anim.SetFloat("LastMoveX", lastMove.x);
