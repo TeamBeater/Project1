@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 50887250570149374}
   - component: {fileID: 61043011813600166}
   - component: {fileID: 58977719772495686}
-  - component: {fileID: 114388538347599492}
+  - component: {fileID: 114931631053133148}
   m_Layer: 0
   m_Name: maincharacter
   m_TagString: Player
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -137,12 +137,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   runMultiplier: 1.75
-  kickMultiplier: 1
   delay: 0.1
   attackCoolDown: 1
-  health: 10
   text: {fileID: 0}
---- !u!114 &114388538347599492
+--- !u!114 &114931631053133148
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,11 +148,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1111519658589596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26b9e1be2cedc14f914861ce6748ea6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e0135bcebe2d7741a368775c15a80a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kickMultiplier: 1
-  fullHealth: 10
+  speed: 3
+  run: 1.75
+  kickMultiplier: 5
+  fullHealth: 20
+  health: 0
 --- !u!212 &212414650121666178
 SpriteRenderer:
   m_ObjectHideFlags: 1

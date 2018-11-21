@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50381062649296906}
   - component: {fileID: 61993865052602204}
   - component: {fileID: 61317589909976668}
-  - component: {fileID: 114222439503036036}
+  - component: {fileID: 114467934752179310}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -115,20 +115,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114222439503036036
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1781804412225294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26b9e1be2cedc14f914861ce6748ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kickMultiplier: 1
-  fullHealth: 5
-  health: 0
 --- !u!114 &114379665966213390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,6 +129,22 @@ MonoBehaviour:
   monsterSpeed: 1
   dodgeMultiplier: 0.3
   hitCoolDown: 1
+--- !u!114 &114467934752179310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781804412225294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0135bcebe2d7741a368775c15a80a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  run: 2
+  kickMultiplier: 5
+  fullHealth: 5
+  health: 0
 --- !u!212 &212245644441510674
 SpriteRenderer:
   m_ObjectHideFlags: 1

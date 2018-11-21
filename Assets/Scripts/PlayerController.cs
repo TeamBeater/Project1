@@ -12,20 +12,16 @@ public class PlayerController : MonoBehaviour {
     public float attackCoolDown = 1.0f;
     public Text text;
     
-    private Animator anim;
-    private Rigidbody2D rb;
+    private CharacterActions characterActions;
     private bool playerMoving;
-    private Vector2 lastMove = Vector2.zero;
     private bool playerRunning;
-    private float t = 0.0f;
     private float textOnTime = 0.0f;
     private float lastAttack = 0.0f;
     private bool youDiedIsOn = false;
     private static GameObject instance = null;
 
     void Start () {
-        anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        characterActions = GetComponent<CharacterActions>();
 
         if (instance == null)
         {
@@ -40,69 +36,22 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void Update () {
-        playerMoving = false;
-        playerRunning = false;
 
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
-        Vector3 playerVelocity = Vector3.zero;
-
-        
-
-        if (moveX != 0.0f || moveY != 0.0f)
-        {
-            playerVelocity = new Vector3(moveX, moveY, 0.0f);
-            playerMoving = true;
-            lastMove = new Vector2(moveX, moveY);
-        }
-
-        playerVelocity *= moveSpeed;
-
-        if (Input.GetAxisRaw("Run") != 0.0f)
-        {
-            playerRunning = true;
-            playerVelocity *= runMultiplier;
-        }
-
-        if (moveX != 0 && moveY != 0)
-        {
-            playerVelocity /= 1.4142f;
-            t = Time.time;
-        }
-
-        rb.velocity = playerVelocity;
-
-        if (Time.time < t + delay && Time.time > delay)
-        {
-            anim.SetFloat("MoveX", lastMove.x);
-            anim.SetFloat("MoveY", lastMove.y);
-            anim.SetFloat("LastMoveX", lastMove.x);
-            anim.SetFloat("LastMoveY", lastMove.y);
-        }
-        else
-        {
-            anim.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
-            anim.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
-        }
-
-        
-        anim.SetBool("PlayerMoving", playerMoving);
-        anim.SetBool("PlayerRunning", playerRunning);
-        anim.SetFloat("LastMoveX", lastMove.x);
-        anim.SetFloat("LastMoveY", lastMove.y);
+        characterActions.ChangeVelocity(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f), Input.GetAxisRaw("Run") != 0.0f);
 
         if (youDiedIsOn && Time.time > textOnTime + 5.0f)
         {
             text.text = "";
+            youDiedIsOn = false;
         }
 	}
 
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Time.time > lastAttack + attackCoolDown && Input.GetKeyDown(KeyCode.Mouse0) && collision.GetComponent<DoDamage>() != null)
+        if (Time.time > lastAttack + attackCoolDown && Input.GetKeyDown(KeyCode.Mouse0))
         {
-            DoDamage dd = collision.GetComponent<DoDamage>();
-            dd.Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
+            collision.gameObject.GetComponent<CharacterActions>().Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
             lastAttack = Time.time;
         }
     }

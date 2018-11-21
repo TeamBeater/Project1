@@ -54,13 +54,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4765084114043910}
+  - component: {fileID: 114885159139077518}
   - component: {fileID: 212341602586400160}
-  - component: {fileID: 114562272141966038}
-  - component: {fileID: 114859734884869418}
   - component: {fileID: 61131118426914152}
-  - component: {fileID: 114666687042358420}
   - component: {fileID: 58861760196397504}
-  - component: {fileID: 114549170262559958}
+  - component: {fileID: 114155069269572876}
+  - component: {fileID: 50591191602431444}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -75,13 +74,33 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1821293272448424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.01, y: 1.22, z: 0}
+  m_LocalPosition: {x: 12.5, y: 2, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_Children:
   - {fileID: 224722853311264746}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50591191602431444
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821293272448424}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!58 &58861760196397504
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -109,7 +128,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
+  m_Offset: {x: 0, y: -0.4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,6 +178,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114155069269572876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1821293272448424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0135bcebe2d7741a368775c15a80a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  run: 2
+  kickMultiplier: 5
+  fullHealth: 100
+  health: 0
 --- !u!114 &114476440732840818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,22 +226,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: NPC
---- !u!114 &114549170262559958
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821293272448424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26b9e1be2cedc14f914861ce6748ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kickMultiplier: 1
-  fullHealth: 1
-  health: 0
---- !u!114 &114562272141966038
+  m_Text: Choices NPC
+--- !u!114 &114885159139077518
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,35 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f3f7e504e9cc147aa12d7b634b70d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  diff: 0.01
   corners: []
---- !u!114 &114666687042358420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821293272448424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f3f7e504e9cc147aa12d7b634b70d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  diff: 0.01
-  corners: []
---- !u!114 &114859734884869418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1821293272448424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db33d3b8bac3e6f49b5178f9886ee1b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: {fileID: 0}
 --- !u!212 &212341602586400160
 SpriteRenderer:
   m_ObjectHideFlags: 1
