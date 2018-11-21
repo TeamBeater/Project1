@@ -2870,7 +2870,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4765084114043910, guid: 9e24fb71afdf9c745b2d7439086186a1, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61131118426914152, guid: 9e24fb71afdf9c745b2d7439086186a1,
         type: 2}
@@ -2970,7 +2970,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d7f234f34abc541808aeac027e47e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: {fileID: 1256663805}
+  UI: {fileID: 0}
+  uiController: {fileID: 0}
 --- !u!4 &252518112 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4928158850321682, guid: 259098dbf1e51ef4dab481d5fd4d1f55,
@@ -4279,7 +4280,7 @@ GameObject:
   - component: {fileID: 389522984}
   - component: {fileID: 389522988}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Main UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4354,7 +4355,7 @@ RectTransform:
   m_Children:
   - {fileID: 1256663804}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4372,6 +4373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4952e6ffd6d4161448bd395978223b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textThing: {fileID: 1256663805}
 --- !u!1001 &389764125
 Prefab:
   m_ObjectHideFlags: 0
@@ -4720,7 +4722,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4765084114043910, guid: 9e24fb71afdf9c745b2d7439086186a1, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 61131118426914152, guid: 9e24fb71afdf9c745b2d7439086186a1,
         type: 2}
@@ -10973,6 +10975,16 @@ Prefab:
       propertyPath: health
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114331696428703948, guid: 8bee5d3754120ae4dbc9feb89b1ebca9,
+        type: 2}
+      propertyPath: kickMultiplier
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114388538347599492, guid: 8bee5d3754120ae4dbc9feb89b1ebca9,
+        type: 2}
+      propertyPath: fullHealth
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bee5d3754120ae4dbc9feb89b1ebca9, type: 2}
   m_IsPrefabAsset: 0
@@ -11850,7 +11862,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1130480373
 Prefab:
@@ -14449,7 +14461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db33d3b8bac3e6f49b5178f9886ee1b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: {fileID: 1256663805}
+  UI: {fileID: 0}
+  uiController: {fileID: 0}
 --- !u!4 &1340605587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4856211705681170, guid: 6f085c3701986c84391f54d757500d08,

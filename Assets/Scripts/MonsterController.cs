@@ -7,7 +7,6 @@ public class MonsterController : MonoBehaviour {
     public float monsterSpeed = 1.0f;
     public float dodgeMultiplier = 0.1f;
     public float hitCoolDown = 1.0f;
-    public int health = 5;
 
     private GameObject player;
     private GameObject[] monsterList;
@@ -40,23 +39,12 @@ public class MonsterController : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
-            if (pc != null && Time.time > time + hitCoolDown)
+            DoDamage dd = collision.gameObject.GetComponent<DoDamage>();
+            if (dd != null && Time.time > time + hitCoolDown)
             {
-                pc.TakeDamage(1, (player.transform.position - transform.position).normalized);
+                dd.Damage(1, (dd.gameObject.transform.position - transform.position).normalized);
                 time = Time.time;
             }
-        }
-    }
-
-    public void TakeDamage(int damage, Vector3 kick)
-    {
-        rb.AddForce(kick);
-        health -= damage;
-        Debug.Log(health);
-        if (health <= 0)
-        {
-            Destroy(this.gameObject);
         }
     }
 }

@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class TalkingNPC : MonoBehaviour {
 
-    public Text message;
-
     private bool playerIsInTrigger = false;
+    public GameObject UI;
+    public UIController uiController;
+
+    private void Start()
+    {
+        UI = GameObject.Find("Main UI");
+        uiController = UI.GetComponent<UIController>();
+    }
 
     void Update ()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerIsInTrigger)
         {
-            message.text = "Hello there!";
+            uiController.DisplayMessage("Hello there!");
         }
 	}
 
@@ -22,7 +28,7 @@ public class TalkingNPC : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             playerIsInTrigger = true;
-            message.text = "(E) to talk";
+            uiController.DisplayMessage("(E) to talk");
         }
     }
 
@@ -31,7 +37,12 @@ public class TalkingNPC : MonoBehaviour {
         if (other.gameObject.tag == "Player")
         {
             playerIsInTrigger = false;
-            message.text = "";
+            uiController.DisplayMessage("");
         }
+    }
+
+    private void OnDestroy()
+    {
+        uiController.DisplayMessage("");
     }
 }

@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour {
     public float runMultiplier = 2.0f;
     public float delay = 0.1f;
     public float attackCoolDown = 1.0f;
-    public int health = 10;
     public Text text;
     
     private Animator anim;
@@ -100,26 +99,15 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Monster" && Input.GetKeyDown(KeyCode.Mouse0) && Time.time > lastAttack + attackCoolDown)
+        if (Time.time > lastAttack + attackCoolDown && Input.GetKeyDown(KeyCode.Mouse0) && collision.GetComponent<DoDamage>() != null)
         {
-            MonsterController mc = collision.GetComponent<MonsterController>();
-            mc.TakeDamage(1, (collision.gameObject.transform.position - transform.position).normalized);
+            DoDamage dd = collision.GetComponent<DoDamage>();
+            dd.Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
             lastAttack = Time.time;
         }
     }
 
-    public void TakeDamage(int damage, Vector3 kick)
-    {
-        rb.AddForce(kick);
-        health -= damage;
-        if (health <= 0)
-        {
-            health = 10;
-            StartCoroutine("LoadScene");
-        }
-    }
-
-    IEnumerator LoadScene()
+    IEnumerator YouDied()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Home");
         asyncLoad.allowSceneActivation = true;

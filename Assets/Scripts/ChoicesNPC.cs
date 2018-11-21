@@ -5,27 +5,33 @@ using UnityEngine.UI;
 
 public class ChoicesNPC : MonoBehaviour
 {
-    public Text message;
-
     private bool playerIsInTrigger = false;
     private bool askedQuestion = false;
+    public GameObject UI;
+    public UIController uiController;
+
+    private void Start()
+    {
+        UI = GameObject.Find("Main UI");
+        uiController = UI.GetComponent<UIController>();
+    }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerIsInTrigger)
         {
-            message.text = "Choose an answer\n(1) answer 1\n(2) answer 2";
+            uiController.DisplayMessage("Choose an answer\n(1) answer 1\n(2) answer 2");
             askedQuestion = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1) && askedQuestion && playerIsInTrigger)
         {
-            message.text = "You answered 1";
+            uiController.DisplayMessage("You answered 1");
             askedQuestion = false;
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2) && askedQuestion && playerIsInTrigger)
         {
-            message.text = "You answered 2";
+            uiController.DisplayMessage("You answered 2");
             askedQuestion = false;
         }
     }
@@ -35,7 +41,7 @@ public class ChoicesNPC : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerIsInTrigger = true;
-            message.text = "(E) to talk";
+            uiController.DisplayMessage("(E) to talk");
         }
     }
 
@@ -44,7 +50,12 @@ public class ChoicesNPC : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerIsInTrigger = false;
-            message.text = "";
+            uiController.DisplayMessage("");
         }
+    }
+
+    private void OnDestroy()
+    {
+         uiController.DisplayMessage("");
     }
 }

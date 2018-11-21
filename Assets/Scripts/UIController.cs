@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
 
     private static GameObject instance = null;
+
+    public Text textThing;
 
     void Start () {
         if (instance == null)
@@ -17,5 +20,15 @@ public class UIController : MonoBehaviour {
         }
         
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void DisplayMessage(string message, string text = "text")
+    {
+        switch (text)
+        {
+            default:
+                textThing.text = message;
+                break;
+        }
     }
 }
