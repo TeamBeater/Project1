@@ -19073,7 +19073,12 @@ Prefab:
     - target: {fileID: 114427666437311854, guid: ee67b2d58c60f98499ec3dcbdad773af,
         type: 2}
       propertyPath: spawn.y
-      value: -0.5
+      value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114427666437311854, guid: ee67b2d58c60f98499ec3dcbdad773af,
+        type: 2}
+      propertyPath: facing.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee67b2d58c60f98499ec3dcbdad773af, type: 2}
