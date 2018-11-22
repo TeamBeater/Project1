@@ -6,11 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class ActiveSceneManager : MonoBehaviour
 {
-    public GameObject player;
-
     private string sceneToLoad;
     private Vector3 spawn = Vector3.zero;
     private Vector3 facing = Vector3.zero;
+    private bool destroyPlayer = false;
     
     private static GameObject instance = null;
 
@@ -39,34 +38,40 @@ public class ActiveSceneManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        player.transform.position = spawn;
-        CharacterActions characterActions = player.GetComponent<CharacterActions>();
-        characterActions.lastMove = facing;
-        characterActions.anim.SetFloat("LastMoveX", facing.x);
-        characterActions.anim.SetFloat("LastMoveY", facing.y);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            if (destroyPlayer)
+            {
+                Destroy(player);
+                Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+            }
+            else
+            {
+                player.transform.position = spawn;
+                CharacterActions characterActions = player.GetComponent<CharacterActions>();
+                characterActions.lastMove = facing;
+                characterActions.anim.SetFloat("LastMoveX", facing.x);
+                characterActions.anim.SetFloat("LastMoveY", facing.y);
+            }
+        }
     }
 
-    public void SceneChange(string scene_temp, Vector3 spawn_temp, Vector3 facing_temp)
+    public void SceneChange(string scene_temp, Vector3 spawn_temp = new Vector3(), Vector3 facing_temp = new Vector3(), bool destroyPlayer_temp = false)
     {
         sceneToLoad = scene_temp;
         spawn = spawn_temp;
         facing = facing_temp;
+        destroyPlayer = destroyPlayer_temp;
         StartCoroutine("SceneChangeCoroutine");
     }
 
     IEnumerator SceneChangeCoroutine()
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
-
-        while (SceneManager.GetActiveScene().name != sceneToLoad)
+        while (!asyncLoad.isDone)
         {
             yield return null;
         }
-
-        /*
-        characterActions.transform.position = spawn;
-        characterActions.anim.SetFloat("LastMoveX", facing.x);
-        characterActions.anim.SetFloat("LastMoveY", facing.y);
-        */
     }
 }

@@ -15,9 +15,7 @@ public class PlayerController : MonoBehaviour {
     private CharacterActions characterActions;
     private bool playerMoving;
     private bool playerRunning;
-    private float textOnTime = 0.0f;
     private float lastAttack = 0.0f;
-    private bool youDiedIsOn = false;
     private static GameObject instance = null;
     private ActiveSceneManager activeSceneManager;
 
@@ -42,10 +40,9 @@ public class PlayerController : MonoBehaviour {
 
         characterActions.ChangeVelocity(new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f), Input.GetAxisRaw("Run") != 0.0f);
 
-        if (youDiedIsOn && Time.time > textOnTime + 5.0f)
+        if (Input.GetAxisRaw("Menu") != 0.0f)
         {
-            text.text = "";
-            youDiedIsOn = false;
+            activeSceneManager.SceneChange("Menu", Vector3.zero, Vector3.zero, true);
         }
 	}
 
@@ -61,9 +58,6 @@ public class PlayerController : MonoBehaviour {
 
     public void YouDied()
     {
-        text.text = "You died";
-        textOnTime = Time.time;
-        youDiedIsOn = true;
-        activeSceneManager.SceneChange("Home", Vector3.zero, Vector3.zero);
+        activeSceneManager.SceneChange("Menu", Vector3.zero, Vector3.zero, true);
     }
 }
