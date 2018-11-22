@@ -10,10 +10,13 @@ public class CharacterActions : MonoBehaviour {
     public int fullHealth = 10;
     public int health;
 
+    [HideInInspector]
+    public Animator anim = null;
+    [HideInInspector]
+    public Vector3 lastMove;
     private Rigidbody2D rb;
-    private Animator anim;
     private bool lockChangeVelocity = false;
-    private Vector3 lastMove;
+    
 
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
@@ -96,7 +99,7 @@ public class CharacterActions : MonoBehaviour {
             if (this.gameObject.tag == "Player")
             {
                 health = fullHealth;
-                this.gameObject.GetComponent<PlayerController>().StartCoroutine("YouDied");
+                this.gameObject.GetComponent<PlayerController>().YouDied();
             }
             else
             {

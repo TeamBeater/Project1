@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
     private float lastAttack = 0.0f;
     private bool youDiedIsOn = false;
     private static GameObject instance = null;
+    private ActiveSceneManager activeSceneManager;
 
     void Start () {
         characterActions = GetComponent<CharacterActions>();
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour {
         }
 
         DontDestroyOnLoad(this.gameObject);
+
+        activeSceneManager = GameObject.FindGameObjectWithTag("ActiveSceneManager").GetComponent<ActiveSceneManager>();
     }
 	
 	void Update () {
@@ -56,20 +59,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    IEnumerator YouDied()
+    public void YouDied()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("Home");
-        asyncLoad.allowSceneActivation = true;
-
-        while (!asyncLoad.isDone)
-        {
-            yield return null;
-        }
-
-        transform.position = new Vector3(-4.5f, -5.5f, 0.0f);
         text.text = "You died";
         textOnTime = Time.time;
         youDiedIsOn = true;
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Home"));
+        activeSceneManager.SceneChange("Home", Vector3.zero, Vector3.zero);
     }
 }

@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Vector3 offset = new Vector3(0.0f, 0.0f, 1.0f);
     public GameObject parent;
+    public bool lockPosition = false;
 
     private static GameObject instance = null;
 
@@ -27,6 +28,9 @@ public class CameraController : MonoBehaviour
 	
 	void Update ()
     {
-        transform.position = parent.transform.position + offset;
+        if (!lockPosition)
+        {
+            transform.position = parent.transform.position + offset;
+        }
 	}
 }
