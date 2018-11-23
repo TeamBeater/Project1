@@ -16,12 +16,20 @@ public class CharacterActions : MonoBehaviour {
     public Vector3 lastMove;
     private Rigidbody2D rb;
     private bool lockChangeVelocity = false;
+    private UIController uiController;
     
 
-	void Start () {
+	void Start ()
+    {
+        uiController = GameObject.Find("Main UI").GetComponent<UIController>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
         health = fullHealth;
+        if (this.gameObject.tag == "Player")
+        {
+            uiController.Health(health);
+        }
     }
 
     //liikkumis scriptit
@@ -94,6 +102,12 @@ public class CharacterActions : MonoBehaviour {
         OverrideMove(0.2f, kick);
 
         health -= damage;
+
+        if (this.gameObject.tag == "Player")
+        {
+            uiController.Health(health);
+        }
+
         if (health <= 0)
         {
             if (this.gameObject.tag == "Player")

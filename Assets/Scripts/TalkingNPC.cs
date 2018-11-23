@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class TalkingNPC : MonoBehaviour {
 
     private bool playerIsInTrigger = false;
-    public GameObject UI;
-    public UIController uiController;
+    private GameObject UI;
+    private UIController uiController;
 
     private void Start()
     {

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
 
     private static GameObject instance = null;
-
-    public Text textThing;
+    public Text messageText;
+    public Text healthText;
 
     void Start () {
         if (instance == null)
@@ -27,8 +27,13 @@ public class UIController : MonoBehaviour {
         switch (text)
         {
             default:
-                textThing.text = message;
+                messageText.text = message;
                 break;
         }
+    }
+
+    public void Health(int health)
+    {
+        healthText.text = "Health: " + health;
     }
 }

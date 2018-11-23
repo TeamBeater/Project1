@@ -45,6 +45,7 @@ public class ActiveSceneManager : MonoBehaviour
             {
                 Destroy(player);
                 Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+                Destroy(GameObject.Find("Main UI"));
             }
             else
             {
