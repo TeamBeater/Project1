@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour {
     
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Time.time > lastAttack + attackCoolDown && Input.GetKeyDown(KeyCode.Mouse0))
+        if (Time.time > lastAttack + attackCoolDown && Input.GetAxisRaw("Fire1") != 0.0f)
         {
             collision.gameObject.GetComponent<CharacterActions>().Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
             lastAttack = Time.time;

@@ -17,7 +17,7 @@ public class TalkingNPC : MonoBehaviour {
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsInTrigger)
+        if (Input.GetAxisRaw("Interact") != 0.0f && playerIsInTrigger)
         {
             uiController.DisplayMessage("Hello there!");
         }

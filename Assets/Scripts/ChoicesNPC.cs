@@ -18,18 +18,18 @@ public class ChoicesNPC : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerIsInTrigger)
+        if (Input.GetAxisRaw("Interact") != 0.0f && playerIsInTrigger)
         {
             uiController.DisplayMessage("Choose an answer\n(1) answer 1\n(2) answer 2");
             askedQuestion = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && askedQuestion && playerIsInTrigger)
+        if (Input.GetAxisRaw("Alpha1") != 0.0f && askedQuestion && playerIsInTrigger)
         {
             uiController.DisplayMessage("You answered 1");
             askedQuestion = false;
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2) && askedQuestion && playerIsInTrigger)
+        else if (Input.GetAxisRaw("Alpha2") != 0.0f && askedQuestion && playerIsInTrigger)
         {
             uiController.DisplayMessage("You answered 2");
             askedQuestion = false;
