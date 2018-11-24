@@ -76,10 +76,6 @@ public class CharacterActions : MonoBehaviour {
         if (rb != null)
         {
             rb.velocity = direction * kickMultiplier;
-            if (this.gameObject.name == "Monster")
-            {
-                Debug.Log(rb.velocity);
-            }
         }
         StartCoroutine(OverrideOn(duration));
     }
