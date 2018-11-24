@@ -117,4 +117,10 @@ public class CharacterActions : MonoBehaviour {
             }
         }
     }
+
+    public void Throw(Throwable throwable, Vector3 position, Quaternion rotation)
+    {
+        Throwable throwableClone = (Throwable) Instantiate(throwable, position, rotation);
+        throwableClone.Fire(lastMove);
+    }
 }

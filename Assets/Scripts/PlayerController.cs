@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     public float delay = 0.1f;
     public float attackCoolDown = 1.0f;
     public Text text;
+    public Throwable throwable;
     
     private CharacterActions characterActions;
     private bool playerMoving;
@@ -43,6 +44,11 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetAxisRaw("Menu") != 0.0f)
         {
             activeSceneManager.SceneChange("Menu", Vector3.zero, Vector3.zero, true);
+        }
+
+        if (Input.GetAxisRaw("Fire2") != 0.0f)
+        {
+            characterActions.Throw(throwable, transform.position, transform.rotation);
         }
 	}
 
