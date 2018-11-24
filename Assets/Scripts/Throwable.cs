@@ -5,16 +5,43 @@ using UnityEngine;
 public class Throwable : MonoBehaviour {
 
     public float speed = 6.0f;
+    public float disappearDelay = 1.0f;
+    public int damage = 1;
 
-	public void Fire (Vector3 direction) {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+    private Rigidbody2D rb;
+
+	public void Fire (Vector3 direction)
+    {
+        rb = GetComponent<Rigidbody2D>();
+
         if (direction == Vector3.zero)
         {
-            rb.velocity = new Vector3(0.0f, speed, 0.0f);
+            rb.velocity = new Vector3(0.0f, -speed, 0.0f);
         }
         else
         {
             rb.velocity = direction.normalized * speed;
         }
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        CharacterActions characterActions = collision.gameObject.GetComponent<CharacterActions>();
+        if (characterActions != null)
+        {
+            characterActions.Damage(damage);
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+            StartCoroutine("StuckAtWall");
+        }
+    }
+
+    IEnumerator StuckAtWall()
+    {
+        yield return new WaitForSecondsRealtime(disappearDelay);
+        Destroy(this.gameObject);
+    }
 }

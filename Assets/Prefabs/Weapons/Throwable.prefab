@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114368816765945696}
   - component: {fileID: 50696489173099688}
   - component: {fileID: 61277754460242910}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Throwable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+  damage: 1
 --- !u!212 &212570555741460542
 SpriteRenderer:
   m_ObjectHideFlags: 1

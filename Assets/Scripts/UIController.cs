@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour {
     private static GameObject instance = null;
     public Text messageText;
     public Text healthText;
+    public Text ammoText;
 
     void Start () {
         if (instance == null)
@@ -35,5 +36,10 @@ public class UIController : MonoBehaviour {
     public void Health(int health)
     {
         healthText.text = "Health: " + health;
+    }
+
+    public void Ammo(int ammo)
+    {
+        ammoText.text = "Ammo: " + ammo;
     }
 }

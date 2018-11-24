@@ -9,6 +9,7 @@ public class ChoicesNPC : MonoBehaviour
     private bool askedQuestion = false;
     private GameObject UI;
     private UIController uiController;
+    private int amtOfAmmoGiven = 10;
 
     private void Start()
     {
@@ -20,18 +21,19 @@ public class ChoicesNPC : MonoBehaviour
     {
         if (Input.GetAxisRaw("Interact") != 0.0f && playerIsInTrigger)
         {
-            uiController.DisplayMessage("Choose an answer\n(1) answer 1\n(2) answer 2");
+            uiController.DisplayMessage("Want more ammo?\n(1) Yes\n(2) No");
             askedQuestion = true;
         }
 
         if (Input.GetAxisRaw("Alpha1") != 0.0f && askedQuestion && playerIsInTrigger)
         {
-            uiController.DisplayMessage("You answered 1");
+            uiController.DisplayMessage("Here");
+            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterActions>().GetAmmo(amtOfAmmoGiven);
             askedQuestion = false;
         }
         else if (Input.GetAxisRaw("Alpha2") != 0.0f && askedQuestion && playerIsInTrigger)
         {
-            uiController.DisplayMessage("You answered 2");
+            uiController.DisplayMessage("What is wrong with you?");
             askedQuestion = false;
         }
     }

@@ -9,6 +9,7 @@ public class CharacterActions : MonoBehaviour {
     public float kickMultiplier = 1.0f;
     public int fullHealth = 10;
     public int health;
+    public float throwCoolDown = 0.5f;
 
     [HideInInspector]
     public Animator anim = null;
@@ -17,6 +18,8 @@ public class CharacterActions : MonoBehaviour {
     private Rigidbody2D rb;
     private bool lockChangeVelocity = false;
     private UIController uiController;
+    private float lastThrowTime = -1.0f;
+    private int amtOfThrowables = 10;
     
 
 	void Start ()
@@ -29,6 +32,7 @@ public class CharacterActions : MonoBehaviour {
         if (this.gameObject.tag == "Player" && uiController.healthText.text == "")
         {
             uiController.Health(health);
+            uiController.Ammo(amtOfThrowables);
         }
     }
 
@@ -120,7 +124,19 @@ public class CharacterActions : MonoBehaviour {
 
     public void Throw(Throwable throwable, Vector3 position, Quaternion rotation)
     {
-        Throwable throwableClone = (Throwable) Instantiate(throwable, position, rotation);
-        throwableClone.Fire(lastMove);
+        if (amtOfThrowables > 0 && Time.time > lastThrowTime + throwCoolDown)
+        {
+            lastThrowTime = Time.time;
+            amtOfThrowables--;
+            uiController.Ammo(amtOfThrowables);
+            Throwable throwableClone = (Throwable)Instantiate(throwable, position, rotation);
+            throwableClone.Fire(lastMove);
+        }
+    }
+
+    public void GetAmmo(int amt)
+    {
+        amtOfThrowables += amt;
+        uiController.Ammo(amtOfThrowables);
     }
 }
