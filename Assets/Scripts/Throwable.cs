@@ -8,6 +8,13 @@ public class Throwable : MonoBehaviour {
 
 	public void Fire (Vector3 direction) {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.velocity = direction.normalized * speed;
+        if (direction == Vector3.zero)
+        {
+            rb.velocity = new Vector3(0.0f, speed, 0.0f);
+        }
+        else
+        {
+            rb.velocity = direction.normalized * speed;
+        }
 	}
 }

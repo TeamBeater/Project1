@@ -26,7 +26,7 @@ public class CharacterActions : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         health = fullHealth;
-        if (this.gameObject.tag == "Player")
+        if (this.gameObject.tag == "Player" && uiController.healthText.text == "")
         {
             uiController.Health(health);
         }
