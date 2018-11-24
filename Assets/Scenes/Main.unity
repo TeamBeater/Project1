@@ -11028,6 +11028,12 @@ Prefab:
       propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114331696428703948, guid: 8bee5d3754120ae4dbc9feb89b1ebca9,
+        type: 2}
+      propertyPath: throwable
+      value: 
+      objectReference: {fileID: 114368816765945696, guid: 5c175927e89019a418b1061105f0192f,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 8bee5d3754120ae4dbc9feb89b1ebca9, type: 2}
