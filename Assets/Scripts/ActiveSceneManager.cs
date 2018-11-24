@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class ActiveSceneManager : MonoBehaviour
 {
-    private string sceneToLoad;
-    private Vector3 spawn = Vector3.zero;
-    private Vector3 facing = Vector3.zero;
-    private bool destroyPlayer = false;
+    private static string sceneToLoad;
+    private static Vector3 spawn = Vector3.zero;
+    private static Vector3 facing = Vector3.zero;
+    private static bool destroyPlayer = false;
     
     private static GameObject instance = null;
 
