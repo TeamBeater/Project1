@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
-
-    public float moveSpeed = 1.0f;
-    public float runMultiplier = 2.0f;
+    
     public float delay = 0.1f;
     public float attackCoolDown = 1.0f;
     public Text text;
