@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Throwable : MonoBehaviour {
 
-    public float speed = 6.0f;
+    public float speed = 8.0f;
     public float disappearDelay = 1.0f;
     public int damage = 1;
 

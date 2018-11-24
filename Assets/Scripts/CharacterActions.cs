@@ -10,6 +10,7 @@ public class CharacterActions : MonoBehaviour {
     public int fullHealth = 10;
     public int health;
     public float throwCoolDown = 0.5f;
+    public int maxAmmo = 20;
 
     [HideInInspector]
     public Animator anim = null;
@@ -137,6 +138,10 @@ public class CharacterActions : MonoBehaviour {
     public void GetAmmo(int amt)
     {
         amtOfThrowables += amt;
+        if (amtOfThrowables > maxAmmo)
+        {
+            amtOfThrowables = maxAmmo;
+        }
         uiController.Ammo(amtOfThrowables);
     }
 }

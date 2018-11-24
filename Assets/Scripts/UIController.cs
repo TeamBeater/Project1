@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour {
     public Text messageText;
     public Text healthText;
     public Text ammoText;
+    public Text moneyText;
 
     void Start () {
         if (instance == null)
@@ -41,5 +42,10 @@ public class UIController : MonoBehaviour {
     public void Ammo(int ammo)
     {
         ammoText.text = "Ammo: " + ammo;
+    }
+
+    public void Money(int money)
+    {
+        moneyText.text = "Money: " + money;
     }
 }
