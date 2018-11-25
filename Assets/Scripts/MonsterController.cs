@@ -5,6 +5,7 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour {
     
     public float hitCoolDown = 1.0f;
+    public int reward = 10;
 
     private GameObject player;
     private CharacterActions characterActions;
@@ -30,5 +31,10 @@ public class MonsterController : MonoBehaviour {
                 time = Time.time;
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        player.GetComponent<MoneySystem>().Increase(reward);
     }
 }
