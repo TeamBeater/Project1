@@ -28,7 +28,8 @@ public class ChoicesNPC : MonoBehaviour
         if (Input.GetAxisRaw("Alpha1") != 0.0f && askedQuestion && playerIsInTrigger)
         {
             uiController.DisplayMessage("Here");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterActions>().GetAmmo(amtOfAmmoGiven);
+            MoneySystem moneySystem = GameObject.FindGameObjectWithTag("Player").GetComponent<MoneySystem>();
+            moneySystem.Decrease(GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterActions>().GetAmmo(Mathf.Min(moneySystem.amtOfMoney, amtOfAmmoGiven)));
             askedQuestion = false;
         }
         else if (Input.GetAxisRaw("Alpha2") != 0.0f && askedQuestion && playerIsInTrigger)

@@ -135,13 +135,16 @@ public class CharacterActions : MonoBehaviour {
         }
     }
 
-    public void GetAmmo(int amt)
+    public int GetAmmo(int amt)
     {
+        int ammoTaken = amt;
         amtOfThrowables += amt;
         if (amtOfThrowables > maxAmmo)
         {
+            ammoTaken -= amtOfThrowables - maxAmmo;
             amtOfThrowables = maxAmmo;
         }
         uiController.Ammo(amtOfThrowables);
+        return ammoTaken;
     }
 }
