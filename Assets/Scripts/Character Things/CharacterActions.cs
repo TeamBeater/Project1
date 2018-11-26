@@ -7,8 +7,6 @@ public class CharacterActions : MonoBehaviour {
     public float speed = 1.0f;
     public float run = 2.0f;
     public float kickMultiplier = 1.0f;
-    public int fullHealth = 10;
-    public int health;
     public float throwCoolDown = 0.5f;
     public int maxAmmo = 20;
 
@@ -29,15 +27,11 @@ public class CharacterActions : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
-        health = fullHealth;
-        if (this.gameObject.tag == "Player" && uiController.healthText.text == "")
+        if (this.gameObject.tag == "Player" && uiController.ammoText.text == "")
         {
-            uiController.Health(health);
             uiController.Ammo(amtOfThrowables);
         }
     }
-
-    //liikkumis scriptit
 
     public void ChangeVelocity(Vector3 velocity, bool running)
     {
@@ -93,34 +87,6 @@ public class CharacterActions : MonoBehaviour {
             yield return null;
         }
         lockChangeVelocity = false;
-    }
-
-    //combat scriptit
-
-    public void Damage(int damage, Vector3 kick = new Vector3())
-    {
-
-        OverrideMove(0.2f, kick);
-
-        health -= damage;
-
-        if (this.gameObject.tag == "Player")
-        {
-            uiController.Health(health);
-        }
-
-        if (health <= 0)
-        {
-            if (this.gameObject.tag == "Player")
-            {
-                health = fullHealth;
-                this.gameObject.GetComponent<PlayerController>().YouDied();
-            }
-            else
-            {
-                Destroy(this.gameObject);
-            }
-        }
     }
 
     public void Throw(Throwable throwable, Vector3 position, Quaternion rotation)

@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (Time.time > lastAttack + attackCoolDown && Input.GetAxisRaw("Fire1") != 0.0f)
         {
-            collision.gameObject.GetComponent<CharacterActions>().Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
+            collision.gameObject.GetComponent<HealthController>().Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
             lastAttack = Time.time;
         }
     }

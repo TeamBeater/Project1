@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
 
     private static GameObject instance = null;
+
     public Text messageText;
     public Text healthText;
     public Text ammoText;

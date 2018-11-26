@@ -27,14 +27,9 @@ public class MonsterController : MonoBehaviour {
         {
             if (Time.time > time + hitCoolDown)
             {
-                collision.GetComponent<CharacterActions>().Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
+                collision.GetComponent<HealthController>().Damage(1, (collision.gameObject.transform.position - transform.position).normalized);
                 time = Time.time;
             }
         }
-    }
-
-    private void OnDestroy()
-    {
-        player.GetComponent<MoneySystem>().Increase(reward);
     }
 }
