@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 61043011813600166}
   - component: {fileID: 58977719772495686}
   - component: {fileID: 114931631053133148}
+  - component: {fileID: 114815795245472674}
   m_Layer: 0
   m_Name: maincharacter
   m_TagString: Player
@@ -135,11 +136,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca673b065da5004aa35a12f108ac8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  runMultiplier: 1.75
   delay: 0.1
   attackCoolDown: 1
   text: {fileID: 0}
+  throwable: {fileID: 0}
+--- !u!114 &114815795245472674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1111519658589596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab35b54a48ed6a449b04acad3d122655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fullHealth: 20
+  rewards:
+  - {x: 100, y: 0}
+  health: 0
 --- !u!114 &114931631053133148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,8 +169,10 @@ MonoBehaviour:
   speed: 3
   run: 1.75
   kickMultiplier: 5
-  fullHealth: 20
-  health: 0
+  throwCoolDown: 0.5
+  maxAmmo: 20
+  anim: {fileID: 0}
+  lastMove: {x: 0, y: 0, z: 0}
 --- !u!212 &212414650121666178
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -26,10 +26,10 @@ public class Throwable : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        CharacterActions characterActions = collision.gameObject.GetComponent<CharacterActions>();
-        if (characterActions != null)
+        HealthController healthController = collision.gameObject.GetComponent<HealthController>();
+        if (healthController != null)
         {
-            characterActions.Damage(damage);
+            healthController.Damage(damage);
             Destroy(this.gameObject);
         }
         else
